@@ -1,0 +1,27 @@
+name: Build and run
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install extra packages
+        run: |
+          sudo apt-get install -y gcc-aarch64-linux-gnu qemu-system-arm
+      - name: Install kraft
+        run: |
+          mkdir -p bin
+          cd bin
+          wget https://github.com/unikraft/kraftkit/releases/download/v0.9.2/kraft_0.9.2_linux_amd64.tar.gz
+          tar xvaf *.tar.gz
+          rm *.tar.gz
+          echo "$PWD" >> "$GITHUB_PATH"
+      - name: Build
+        run: |
+          kraft build
+      - name: Run
+        run: |
+          kraft run --arch arm64 --plat qemu

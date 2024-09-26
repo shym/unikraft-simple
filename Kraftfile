@@ -1,0 +1,8 @@
+spec: v0.6
+name: simple
+unikraft: stable
+libraries:
+  musl: stable
+  lwip: stable
+targets:
+- qemu/arm64
