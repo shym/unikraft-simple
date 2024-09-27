@@ -1,6 +1,9 @@
 spec: v0.6
 name: simple
-unikraft: stable
+unikraft:
+  version: stable
+  kconfig:
+  - CONFIG_LIBUKDEBUG_PRINTD=y
 libraries:
   musl: stable
   lwip: stable
