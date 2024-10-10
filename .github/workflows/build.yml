@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir -p bin
           cd bin
-          wget https://github.com/unikraft/kraftkit/releases/download/v0.9.2/kraft_0.9.2_linux_amd64.tar.gz
+          wget https://github.com/unikraft/kraftkit/releases/download/v0.9.2-91-g51efc052/kraft_0.9.2-91-g51efc052_linux_amd64.tar.gz
           tar xvaf *.tar.gz
           rm *.tar.gz
           echo "$PWD" >> "$GITHUB_PATH"
