@@ -10,4 +10,4 @@ libraries:
   musl: staging
   lwip: staging
 targets:
-- qemu/arm64
+- qemu/x86_64
