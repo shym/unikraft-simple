@@ -3,7 +3,6 @@ name: simple
 unikraft:
   version: staging
   kconfig:
-  - CONFIG_LIBUKDEBUG_PRINTD=y
   - CONFIG_LIBSYSCALL_SHIM_LEGACY_VERBOSE=n
 # ^ To avoid many many compilation warnings. Are they revealing a real issue?
 libraries:
