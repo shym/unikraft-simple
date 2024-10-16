@@ -27,4 +27,4 @@ jobs:
           cat .config.simple_qemu-arm64
       - name: Run
         run: |
-          qemu-system-aarch64 -machine virt -cpu max -nographic -nodefaults -serial stdio -netdev user,id=n0,restrict=on -device virtio-net-pci,netdev=n0 -kernel .unikraft/build/simple_qemu-arm64
+          qemu-system-aarch64 -machine virt -cpu cortex-a53 -nographic -nodefaults -serial stdio -netdev user,id=n0,restrict=on -device virtio-net-pci,netdev=n0 -kernel .unikraft/build/simple_qemu-arm64
