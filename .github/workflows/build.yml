@@ -25,6 +25,7 @@ jobs:
       - name: Display the configuration
         run: |
           cat .config.simple_qemu-arm64
+        if: ${{ always() }}
       - name: Run
         run: |
           qemu-system-aarch64 -machine virt -cpu cortex-a53 -nographic -nodefaults -serial stdio -netdev user,id=n0,restrict=on -device virtio-net-pci,netdev=n0 -kernel .unikraft/build/simple_qemu-arm64
