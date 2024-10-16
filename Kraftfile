@@ -3,7 +3,6 @@ name: simple
 unikraft:
   version: staging
   kconfig:
-  - CONFIG_MCPU_ARM64_CORTEX_A53=y
   - CONFIG_LIBUKRANDOM=n
   - CONFIG_LIBUKDEBUG_PRINTD=y
   - CONFIG_LIBSYSCALL_SHIM_LEGACY_VERBOSE=n
