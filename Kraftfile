@@ -10,6 +10,5 @@ unikraft:
 # ^ To avoid many many compilation warnings. Are they revealing a real issue?
 libraries:
   musl: staging
-  lwip: staging
 targets:
 - qemu/arm64
