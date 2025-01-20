@@ -1,7 +1,8 @@
 spec: v0.6
 name: simple
 unikraft:
-  version: staging
+  source: https://github.com/shym/unikraft.git
+  version: fix-ibmpc
   kconfig:
   - CONFIG_LIBSYSCALL_SHIM_LEGACY_VERBOSE=n
 # ^ To avoid many many compilation warnings. Are they revealing a real issue?
