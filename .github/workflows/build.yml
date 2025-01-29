@@ -27,14 +27,14 @@ jobs:
           kraft build
       - name: Display the configuration
         run: |
-          cat .config.simple_qemu-x86_64
+          cat .config.simple_qemu-*
         if: ${{ always() }}
-      - name: Run with no -append
+      - name: Run with no argument
         run: |
-          qemu-system-x86_64 -nographic -nodefaults -serial stdio -netdev user,id=n0,restrict=on -device virtio-net-pci,netdev=n0 -kernel .unikraft/build/simple_qemu-x86_64
-      - name: Run with -append
+          kraft run .
+      - name: Run with arguments
         run: |
-          qemu-system-x86_64 -nographic -nodefaults -serial stdio -netdev user,id=n0,restrict=on -device virtio-net-pci,netdev=n0 -kernel .unikraft/build/simple_qemu-x86_64 -append 'arg1 arg2 arg3 arg4 arg5'
-      - name: Run with -append and --
+          kraft run . -- arg1 arg2 arg3 arg4 arg5
+      - name: Run with --
         run: |
-          qemu-system-x86_64 -nographic -nodefaults -serial stdio -netdev user,id=n0,restrict=on -device virtio-net-pci,netdev=n0 -kernel .unikraft/build/simple_qemu-x86_64 -append 'arg1 arg2 arg3 -- arg4 arg5'
+          kraft run . -- arg1 arg2 arg3 -- arg4 arg5
