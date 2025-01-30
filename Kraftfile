@@ -8,4 +8,4 @@ unikraft:
 libraries:
   musl: staging
 targets:
-- qemu/x86_64
+- qemu/arm64
