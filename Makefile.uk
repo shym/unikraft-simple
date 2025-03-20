@@ -1,0 +1,3 @@
+$(eval $(call addlib,appsimple))
+
+APPSIMPLE_SRCS-y += $(APPSIMPLE_BASE)/main.c
