@@ -7,19 +7,19 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install extra packages
         run: |
-          sudo apt-get install -y strace qemu-system-arm
+          sudo apt-get install -y strace qemu-system-x86
       - name: Install kraft
         run: |
           mkdir -p bin
           cd bin
-          wget https://github.com/unikraft/kraftkit/releases/download/v${KRAFTKIT}/kraft_${KRAFTKIT}_linux_arm64.tar.gz
+          wget https://github.com/unikraft/kraftkit/releases/download/v${KRAFTKIT}/kraft_${KRAFTKIT}_linux_amd64.tar.gz
           tar xvaf *.tar.gz
           rm *.tar.gz
           echo "$PWD" >> "$GITHUB_PATH"
@@ -35,4 +35,4 @@ jobs:
           set -x
           dd if=/dev/zero of=block0 bs=10M count=1
           dd if=/dev/zero of=block1 bs=10M count=1
-          qemu-system-aarch64 -cpu max -nographic -nodefaults -serial stdio -M virt -kernel .unikraft/build/simple_qemu-arm64 -drive file=block0,if=virtio,id=hvirtio0,format=raw -drive file=block1,if=virtio,id=hvirtio1,format=raw
+          qemu-system-x86_64 -nographic -nodefaults -serial stdio -kernel .unikraft/build/simple_qemu-x86_64 -drive file=block0,if=virtio,id=hvirtio0,format=raw -drive file=block1,if=virtio,id=hvirtio1,format=raw
