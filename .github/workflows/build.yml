@@ -8,6 +8,7 @@ env:
 jobs:
   test:
     runs-on: ubuntu-24.04-arm
+    timeout-minutes: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,6 +32,7 @@ jobs:
         if: ${{ always() }}
       - name: Run with 2 block devices
         run: |
+          set -x
           dd if=/dev/zero of=block0 bs=10M count=1
           dd if=/dev/zero of=block1 bs=10M count=1
           qemu-system-aarch64 -cpu max -nographic -nodefaults -serial stdio -M virt -kernel .unikraft/build/simple_qemu-arm64 -drive file=block0,if=virtio,id=hvirtio0,format=raw -drive file=block1,if=virtio,id=hvirtio1,format=raw
