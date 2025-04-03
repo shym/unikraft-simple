@@ -1,0 +1,10 @@
+spec: v0.6
+name: simple
+unikraft:
+  version: staging
+  # kconfig:
+  # - CONFIG_LIBUKDEBUG_PRINTD=y
+libraries:
+  musl: staging
+targets:
+- qemu/x86_64

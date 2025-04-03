@@ -1,0 +1,35 @@
+name: Build and run
+
+on: push
+
+env:
+  KRAFTKIT: "0.11.5"
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install extra packages
+        run: |
+          sudo apt-get install -y qemu-system-x86
+      - name: Install kraft
+        run: |
+          mkdir -p bin
+          cd bin
+          wget --no-verbose https://github.com/unikraft/kraftkit/releases/download/v${KRAFTKIT}/kraft_${KRAFTKIT}_linux_amd64.tar.gz
+          tar xvaf *.tar.gz
+          rm *.tar.gz
+          echo "$PWD" >> "$GITHUB_PATH"
+      - name: Build
+        run: |
+          kraft build
+      - name: Display the configuration
+        run: |
+          cat .config.simple_qemu-*
+        if: ${{ always() }}
+      - name: Run
+        run: |
+          kraft run .
