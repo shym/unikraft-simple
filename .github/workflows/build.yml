@@ -32,4 +32,4 @@ jobs:
         if: ${{ always() }}
       - name: Run
         run: |
-          kraft run .
+          qemu-system-x86_64 -nographic -nodefaults -serial stdio -kernel .unikraft/build/simple_qemu-x86_64
