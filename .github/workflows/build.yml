@@ -3,7 +3,7 @@ name: Build and run
 on: push
 
 env:
-  KRAFTKIT: "0.11.5"
+  KRAFTKIT: "0.11.6"
 
 jobs:
   test:
