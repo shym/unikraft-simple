@@ -2,5 +2,7 @@ spec: v0.6
 name: simple
 unikraft:
   version: staging
+libraries:
+  musl: staging
 targets:
 - qemu/arm64
