@@ -3,6 +3,6 @@ name: simple
 unikraft:
   version: staging
 libraries:
-  musl: staging
+  lwip: staging
 targets:
 - qemu/arm64
