@@ -5,4 +5,4 @@ unikraft:
 libraries:
   lwip: staging
 targets:
-- qemu/arm64
+- qemu/x86_64
